@@ -10,12 +10,6 @@ public class DrumsController : MonoBehaviour {
     Chart chart;
 
     float hitTiming;
-    List<KeyCode> heldKeys;
-
-    KeyCode leftOuterKey;
-    KeyCode rightOuterKey;
-    KeyCode leftInnerKey;
-    KeyCode rightInnerKey;
 
     GameObject leftOuterDrum;
     GameObject rightOuterDrum;
@@ -26,13 +20,6 @@ public class DrumsController : MonoBehaviour {
     {
         clock = FindObjectOfType<GameClock>();
         chart = FindObjectOfType<Chart>();
-
-        leftOuterKey = KeyCode.A;
-        rightOuterKey = KeyCode.Quote;
-        leftInnerKey = KeyCode.S;
-        rightInnerKey = KeyCode.Semicolon;
-
-        heldKeys = new List<KeyCode>();
 
         leftOuterDrum = gameObject.transform.Find("drum-outer-left").gameObject;
         rightOuterDrum = gameObject.transform.Find("drum-outer-right").gameObject;
@@ -48,66 +35,58 @@ public class DrumsController : MonoBehaviour {
         hitDrumsTiming();
 	}
 
-    private void checkIfHitcircle()
+    private void checkIfHitcircle(int drumType)
     {
-        FindObjectOfType<HitcirclesStateManager>().Hit(hitTiming);
+        FindObjectOfType<HitcirclesStateManager>().Hit(hitTiming, drumType);
     }
 
     void hitDrumsVisuals()
     {
         //Left outer drum
-        if(Input.GetKeyDown(leftOuterKey))
+        if(Input.GetButtonDown("LeftOuterDrum"))
         {
             leftOuterDrum.SetActive(true);
-            heldKeys.Add(leftOuterKey);
 
             audioManager.Play("normalHitclap");
         }
-        if (!Input.GetKey(leftOuterKey))
+        if (!Input.GetButton("LeftOuterDrum"))
         {
-            if (heldKeys.Contains(leftOuterKey)) heldKeys.Remove(leftOuterKey);
             leftOuterDrum.SetActive(false);
         }
 
         //Right outer drum
-        if (Input.GetKeyDown(rightOuterKey))
+        if (Input.GetButtonDown("RightOuterDrum"))
         {
             rightOuterDrum.SetActive(true);
-            heldKeys.Add(rightOuterKey);
 
             audioManager.Play("normalHitclap");
         }
-        if (!Input.GetKey(rightOuterKey))
+        if (!Input.GetButton("RightOuterDrum"))
         {
-            if (heldKeys.Contains(rightOuterKey)) heldKeys.Remove(rightOuterKey);
             rightOuterDrum.SetActive(false);
         }
 
         //Left inner drum
-        if (Input.GetKeyDown(leftInnerKey))
+        if (Input.GetButtonDown("LeftInnerDrum"))
         {
             leftInnerDrum.SetActive(true);
-            heldKeys.Add(leftInnerKey);
 
             audioManager.Play("normalHitnormal");
         }
-        if (!Input.GetKey(leftInnerKey))
+        if (!Input.GetButton("LeftInnerDrum"))
         {
-            if (heldKeys.Contains(leftInnerKey)) heldKeys.Remove(leftInnerKey);
             leftInnerDrum.SetActive(false);
         }
 
         //Right inner drum
-        if (Input.GetKeyDown(rightInnerKey))
+        if (Input.GetButtonDown("RightInnerDrum"))
         {
             rightInnerDrum.SetActive(true);
-            heldKeys.Add(rightInnerKey);
 
             audioManager.Play("normalHitnormal");
         }
-        if (!Input.GetKey(rightInnerKey))
+        if (!Input.GetButton("RightInnerDrum"))
         {
-            if (heldKeys.Contains(rightInnerKey)) heldKeys.Remove(rightInnerKey);
             rightInnerDrum.SetActive(false);
         }
     }
@@ -119,7 +98,7 @@ public class DrumsController : MonoBehaviour {
         {
             hitTiming = clock.getTime();
 
-            if (chart.timings.Count > 0) checkIfHitcircle();
+            if (chart.timings.Count > 0) checkIfHitcircle(2);
         }
 
         //Right outer drum
@@ -127,7 +106,7 @@ public class DrumsController : MonoBehaviour {
         {
             hitTiming = clock.getTime();
 
-            if (chart.timings.Count > 0) checkIfHitcircle();
+            if (chart.timings.Count > 0) checkIfHitcircle(2);
         }
 
         //Left inner drum
@@ -135,7 +114,7 @@ public class DrumsController : MonoBehaviour {
         {
             hitTiming = clock.getTime();
 
-            if (chart.timings.Count > 0) checkIfHitcircle();
+            if (chart.timings.Count > 0) checkIfHitcircle(1);
         }
 
         //Right inner drum
@@ -143,7 +122,7 @@ public class DrumsController : MonoBehaviour {
         {
             hitTiming = clock.getTime();
 
-            if (chart.timings.Count > 0) checkIfHitcircle();
+            if (chart.timings.Count > 0) checkIfHitcircle(1);
         }
     }
 }

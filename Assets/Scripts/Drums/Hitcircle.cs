@@ -9,7 +9,7 @@ public class Hitcircle : MonoBehaviour{
     Chart chart;
 
     public int objectId;
-    public bool type; //true for inner, false for outer
+    public int type;
 
     float speed;
     public float hitTiming;
@@ -32,7 +32,7 @@ public class Hitcircle : MonoBehaviour{
         travelDistance = transform.position.x + 4.5f; //4.5 is the x position of the hit area
         speed = travelDistance / travelTime;
 
-        gameObject.GetComponent<SpriteRenderer>().sortingOrder = objectId + 1;
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = objectId + 2;
         gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = objectId + 2;
 
         chart.hitObjects.Add(gameObject);
@@ -48,16 +48,7 @@ public class Hitcircle : MonoBehaviour{
     {
         if(gameClock.getTime() - chart.hitTimingWindow > hitTiming)
         {
-            Debug.Log("Miss");
             FindObjectOfType<HitcirclesStateManager>().Miss();
-            DestroyOnMiss();
         }
-    }
-
-    void DestroyOnMiss()
-    {
-        Destroy(gameObject);
-        chart.hitObjects.RemoveAt(0);
-        chart.timings.RemoveAt(0);
     }
 }

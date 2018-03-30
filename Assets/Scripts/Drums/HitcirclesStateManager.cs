@@ -22,22 +22,25 @@ public class HitcirclesStateManager : MonoBehaviour {
         chart = FindObjectOfType<Chart>();
     }
 
-    public void Hit(float hitTiming)
+    public void Hit(float hitTiming, int drumType)
     {
         float minTiming = chart.timings[0] - chart.hitTimingWindow;
         float maxTiming = chart.timings[0] + chart.hitTimingWindow;
-
-        //Checking if player has hit the right key
-        
 
         if (hitTiming >= minTiming && hitTiming <= maxTiming)
         {
             float offset = hitTiming - chart.timings[0];
             Debug.Log("hit with " + offset + "ms offset");
 
-            Perfect();
-
-            chart.RemoveFirstHitcirle();
+            //Checking if player has hit the right key
+            if (drumType == chart.hitObjects[0].GetComponent<Hitcircle>().type)
+            {
+                Perfect();
+            }
+            else
+            {
+                Miss();
+            }
         }
     }
 
@@ -46,6 +49,7 @@ public class HitcirclesStateManager : MonoBehaviour {
         GameObject glowInstance = Instantiate(missGlow,glowPosition, Quaternion.identity, dynamic.transform);
         rend = glowInstance.GetComponent<SpriteRenderer>();
         StartCoroutine(FadeGlow(0.4f, rend, glowInstance));
+        chart.RemoveFirstHitcirle();
     }
 
     public void Okay()
@@ -53,6 +57,7 @@ public class HitcirclesStateManager : MonoBehaviour {
         GameObject glowInstance = Instantiate(okGlow, glowPosition, Quaternion.identity, dynamic.transform);
         rend = glowInstance.GetComponent<SpriteRenderer>();
         StartCoroutine(FadeGlow(0.4f, rend, glowInstance));
+        chart.RemoveFirstHitcirle();
     }
 
     public void Perfect()
@@ -60,6 +65,7 @@ public class HitcirclesStateManager : MonoBehaviour {
         GameObject glowInstance = Instantiate(perfectGlow, glowPosition, Quaternion.identity, dynamic.transform);
         rend = glowInstance.GetComponent<SpriteRenderer>();
         StartCoroutine(FadeGlow(0.4f, rend, glowInstance));
+        chart.RemoveFirstHitcirle();
     }
 
     IEnumerator FadeGlow(float aTime, SpriteRenderer rend, GameObject glowInstance)

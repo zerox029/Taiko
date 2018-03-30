@@ -25,6 +25,7 @@ public class HitcircleInstantiator : MonoBehaviour {
         {
             GameObject hitCircle = Instantiate(hitcircleInner, startingPosition, Quaternion.identity, dynamic.transform);
             hitCircle.GetComponent<Hitcircle>().objectId = hitobjectsCount;
+            hitCircle.GetComponent<Hitcircle>().type = 1;
 
             hitobjectsCount++;
         }
@@ -32,6 +33,7 @@ public class HitcircleInstantiator : MonoBehaviour {
         {
             GameObject hitCircle = Instantiate(hitcircleOuter, startingPosition, Quaternion.identity, dynamic.transform);
             hitCircle.GetComponent<Hitcircle>().objectId = hitobjectsCount;
+            hitCircle.GetComponent<Hitcircle>().type = 2;
 
             hitobjectsCount++;
         }

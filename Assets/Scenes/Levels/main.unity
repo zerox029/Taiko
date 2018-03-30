@@ -136,87 +136,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &647922047
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 647922048}
-  - component: {fileID: 647922049}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &647922048
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 647922047}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 735670968}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &647922049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 647922047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6385c44f7208ff4a9f6387bafe25990, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: normalHitclap
-    clip: {fileID: 8300000, guid: cf7beda17b271d14aa487d42619edd9a, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-  - name: normalHitnormal
-    clip: {fileID: 8300000, guid: 9501cbd1ceadef4439633ed943a818c3, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    source: {fileID: 0}
 --- !u!1 &735670967
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,6 +146,7 @@ GameObject:
   - component: {fileID: 735670968}
   - component: {fileID: 735670969}
   - component: {fileID: 735670970}
+  - component: {fileID: 735670971}
   m_Layer: 0
   m_Name: Management
   m_TagString: Untagged
@@ -245,7 +165,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 788399558}
-  - {fileID: 647922048}
   - {fileID: 1000347023}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -283,6 +202,58 @@ MonoBehaviour:
   perfectGlow: {fileID: 1807921941205918, guid: d2f8bf4d6698bf248ad81f86a7262583,
     type: 2}
   glowPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &735670971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 735670967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6385c44f7208ff4a9f6387bafe25990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: normalHitclap
+    clip: {fileID: 8300000, guid: cf7beda17b271d14aa487d42619edd9a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: normalHitnormal
+    clip: {fileID: 8300000, guid: 9501cbd1ceadef4439633ed943a818c3, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: normalHitfinish
+    clip: {fileID: 8300000, guid: e099879e9f1112c4aba512f599fd7aca, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: normalHitwhistle
+    clip: {fileID: 8300000, guid: e867d1592d08ed748b8d2e7376df7986, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: softHitclap
+    clip: {fileID: 8300000, guid: b99658a702d5df44884d8a49dc7d44fa, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: softHitnormal
+    clip: {fileID: 8300000, guid: 0e6fad6b3e1bfb1449107da0f79f3a7b, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: softHitfinish
+    clip: {fileID: 8300000, guid: 8f11d175785f69b47bbc23e60064e5bb, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
 --- !u!1 &788399557
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +326,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 735670968}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1000347024
 MonoBehaviour:
